@@ -25,30 +25,18 @@
     </style>
 </head>
 <body>
-    <video id="rickroll-video" autoplay playsinline loop>
-        <source src="lv_0_20250110123202.mp4" type="video/mp4">
+    <video autoplay muted playsinline controls loop>
+        <source src="Rickroll with special link [Troll].mp4" type="video/mp4">
         Votre navigateur ne supporte pas la lecture vidéo.
     </video>
 
     <script>
-        // Forcer la lecture automatique avec le son
-        window.onload = () => {
-            const video = document.getElementById("rickroll-video");
-
-            // Essaye de jouer la vidéo avec le son
+        // Déclenche le son immédiatement après le chargement (sans interaction utilisateur, peut être bloqué par certains navigateurs modernes).
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.querySelector("video");
             video.muted = false;
-            video.play().catch((error) => {
-                console.warn("Lecture automatique bloquée. Tentative de déblocage...");
-
-                // Solution de contournement : remuter et démuter pour essayer de contourner les restrictions
-                video.muted = true;
-                video.play().then(() => {
-                    video.muted = false; // Rétablir le son
-                }).catch(err => {
-                    console.error("Impossible de démarrer la vidéo automatiquement : ", err);
-                });
-            });
-        };
+            video.play().catch(error => console.error("Autoplay bloqué :", error));
+        });
     </script>
 </body>
 </html>
