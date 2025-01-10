@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maire Anael's Bisness Card</title>
+    <style>
+        /* Mise en page pour le plein écran */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted playsinline controls loop>
+        <source src="Je broie la langue de Molière.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+
+    <script>
+        // Déclenche le son immédiatement après le chargement (sans interaction utilisateur, peut être bloqué par certains navigateurs modernes).
+        document.addEventListener("DOMContentLoaded", () => {
+            const video = document.querySelector("video");
+            video.muted = false;
+            video.play().catch(error => console.error("Autoplay bloqué :", error));
+        });
+    </script>
+</body>
+</html>
