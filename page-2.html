@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick Roll</title>
+    <style>
+        /* Mise en page pour le plein écran */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <video id="rickroll-video" autoplay playsinline loop>
+        <source src="rick_role.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture vidéo.
+    </video>
+
+    <script>
+        // Forcer la lecture automatique avec le son
+        window.onload = () => {
+            const video = document.getElementById("rickroll-video");
+
+            // Essaye de jouer la vidéo avec le son
+            video.muted = false;
+            video.play().catch((error) => {
+                console.warn("Lecture automatique bloquée. Tentative de déblocage...");
+
+                // Solution de contournement : remuter et démuter pour essayer de contourner les restrictions
+                video.muted = true;
+                video.play().then(() => {
+                    video.muted = false; // Rétablir le son
+                }).catch(err => {
+                    console.error("Impossible de démarrer la vidéo automatiquement : ", err);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
